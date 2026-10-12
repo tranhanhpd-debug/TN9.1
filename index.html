@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="vi" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trò chơi Trắc nghiệm Ôn tập Toán 9 (Đề 1 - Đề 5)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- KaTeX for Mathematics -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        @keyframes pulse-subtle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        .animate-pulse-subtle { animation: pulse-subtle 3s infinite ease-in-out; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-slate-900 text-slate-100 min-h-full flex flex-col justify-between">
+
+    <header class="w-full bg-slate-900/80 backdrop-blur-md border-b border-slate-700/60 py-4 px-6 sticky top-0 z-50 flex justify-between items-center shadow-lg">
+        <div class="flex items-center space-x-3 cursor-pointer" onclick="returnToHome()">
+            <div class="bg-gradient-to-tr from-indigo-500 to-pink-500 p-2.5 rounded-xl shadow-md text-white">
+                <i class="fa-solid fa-graduation-cap text-xl"></i>
+            </div>
+            <div>
+                <h1 class="text-lg font-bold tracking-wide bg-gradient-to-r from-indigo-300 via-pink-300 to-white bg-clip-text text-transparent">Toán 9 Master Quiz</h1>
+                <p class="text-xs text-slate-400">Ôn thi học kì & Tuyển sinh 10 (Đề 1 đến Đề 5)</p>
+            </div>
+        </div>
+        <div class="flex items-center space-x-3">
+            <button onclick="toggleSound()" id="soundToggleBtn" class="bg-slate-800 hover:bg-slate-700 p-2.5 rounded-xl text-slate-300 transition shadow border border-slate-700" title="Bật/Tắt âm thanh">
+                <i class="fa-solid fa-volume-high" id="soundIcon"></i>
+            </button>
+            <button onclick="openStatsModal()" class="bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-xl text-xs font-medium text-slate-300 transition shadow border border-slate-700 flex items-center space-x-2">
+                <i class="fa-solid fa-trophy text-amber-400"></i>
+                <span class="hidden sm:inline">Thành tích</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center p-4 sm:p-6 w-full max-w-5xl mx-auto">
+
+        <!-- SCREEN 1: SELECTION SCREEN -->
+        <div id="selectionScreen" class="w-full max-w-3xl glass-card rounded-3xl p-6 sm:p-10 text-slate-800 shadow-2xl transition-all duration-300">
+            <div class="text-center mb-8">
+                <span class="bg-indigo-100 text-indigo-700 font-semibold px-3.5 py-1.5 rounded-full text-xs uppercase tracking-wider">Hệ thống 60 câu hỏi chuẩn</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-2">Chọn Đề Thi Ôn Tập Toán 9</h2>
+                <p class="text-slate-600 text-sm max-w-lg mx-auto">Bao gồm Đại số (Phương trình, Hệ phương trình) và Hình học (Hệ thức lượng trong tam giác vuông).</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                <!-- Đề 1 -->
+                <button onclick="startQuiz(1)" class="group bg-gradient-to-br from-indigo-50 to-white hover:from-indigo-600 hover:to-purple-600 hover:text-white p-5 rounded-2xl border border-indigo-100 shadow-sm transition-all duration-300 text-left flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold text-lg text-indigo-900 group-hover:text-white">Đề 1</span>
+                            <span class="bg-indigo-200 text-indigo-800 group-hover:bg-indigo-500 group-hover:text-white text-xs font-semibold px-2.5 py-1 rounded-lg">12 câu</span>
+                        </div>
+                        <p class="text-xs text-slate-500 group-hover:text-indigo-100">Phương trình, hệ phương trình, tỉ số lượng giác.</p>
+                    </div>
+                    <div class="mt-4 flex items-center text-xs font-semibold text-indigo-600 group-hover:text-white">
+                        <span>Làm bài ngay</span> <i class="fa-solid fa-arrow-right ml-2 transition group-hover:translate-x-1"></i>
+                    </div>
+                </button>
+
+                <!-- Đề 2 -->
+                <button onclick="startQuiz(2)" class="group bg-gradient-to-br from-purple-50 to-white hover:from-purple-600 hover:to-pink-600 hover:text-white p-5 rounded-2xl border border-purple-100 shadow-sm transition-all duration-300 text-left flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold text-lg text-purple-900 group-hover:text-white">Đề 2</span>
+                            <span class="bg-purple-200 text-purple-800 group-hover:bg-purple-500 group-hover:text-white text-xs font-semibold px-2.5 py-1 rounded-lg">12 câu</span>
+                        </div>
+                        <p class="text-xs text-slate-500 group-hover:text-purple-100">Hệ phương trình bậc nhất, giá trị lượng giác góc nhọn.</p>
+                    </div>
+                    <div class="mt-4 flex items-center text-xs font-semibold text-purple-600 group-hover:text-white">
+                        <span>Làm bài ngay</span> <i class="fa-solid fa-arrow-right ml-2 transition group-hover:translate-x-1"></i>
+                    </div>
+                </button>
+
+                <!-- Đề 3 -->
+                <button onclick="startQuiz(3)" class="group bg-gradient-to-br from-blue-50 to-white hover:from-blue-600 hover:to-indigo-600 hover:text-white p-5 rounded-2xl border border-blue-100 shadow-sm transition-all duration-300 text-left flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold text-lg text-blue-900 group-hover:text-white">Đề 3</span>
+                            <span class="bg-blue-200 text-blue-800 group-hover:bg-blue-500 group-hover:text-white text-xs font-semibold px-2.5 py-1 rounded-lg">12 câu</span>
+                        </div>
+                        <p class="text-xs text-slate-500 group-hover:text-blue-100">Nghiệm phương trình tích, hệ PT, định lý Pythagoras.</p>
+                    </div>
+                    <div class="mt-4 flex items-center text-xs font-semibold text-blue-600 group-hover:text-white">
+                        <span>Làm bài ngay</span> <i class="fa-solid fa-arrow-right ml-2 transition group-hover:translate-x-1"></i>
+                    </div>
+                </button>
+
+                <!-- Đề 4 -->
+                <button onclick="startQuiz(4)" class="group bg-gradient-to-br from-emerald-50 to-white hover:from-emerald-600 hover:to-teal-600 hover:text-white p-5 rounded-2xl border border-emerald-100 shadow-sm transition-all duration-300 text-left flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold text-lg text-emerald-900 group-hover:text-white">Đề 4</span>
+                            <span class="bg-emerald-200 text-emerald-800 group-hover:bg-emerald-500 group-hover:text-white text-xs font-semibold px-2.5 py-1 rounded-lg">12 câu</span>
+                        </div>
+                        <p class="text-xs text-slate-500 group-hover:text-emerald-100">Hệ phương trình nâng cao, tỉ số lượng giác tam giác vuông.</p>
+                    </div>
+                    <div class="mt-4 flex items-center text-xs font-semibold text-emerald-600 group-hover:text-white">
+                        <span>Làm bài ngay</span> <i class="fa-solid fa-arrow-right ml-2 transition group-hover:translate-x-1"></i>
+                    </div>
+                </button>
+
+                <!-- Đề 5 -->
+                <button onclick="startQuiz(5)" class="group bg-gradient-to-br from-amber-50 to-white hover:from-amber-600 hover:to-orange-600 hover:text-white p-5 rounded-2xl border border-amber-100 shadow-sm transition-all duration-300 text-left flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold text-lg text-amber-900 group-hover:text-white">Đề 5</span>
+                            <span class="bg-amber-200 text-amber-800 group-hover:bg-amber-500 group-hover:text-white text-xs font-semibold px-2.5 py-1 rounded-lg">12 câu</span>
+                        </div>
+                        <p class="text-xs text-slate-500 group-hover:text-amber-100">Phương trình vô nghiệm, hệ thức lượng, cot, sin, cos.</p>
+                    </div>
+                    <div class="mt-4 flex items-center text-xs font-semibold text-amber-600 group-hover:text-white">
+                        <span>Làm bài ngay</span> <i class="fa-solid fa-arrow-right ml-2 transition group-hover:translate-x-1"></i>
+                    </div>
+                </button>
+
+                <!-- Practice All (60 questions) -->
+                <button onclick="startQuiz('all')" class="group bg-gradient-to-br from-slate-900 to-indigo-950 text-white hover:from-indigo-600 hover:to-pink-600 p-5 rounded-2xl border border-slate-800 shadow-md transition-all duration-300 text-left flex flex-col justify-between sm:col-span-2 lg:col-span-1">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold text-lg text-amber-300"><i class="fa-solid fa-bolt mr-2"></i>Tổng hợp tất cả</span>
+                            <span class="bg-amber-500/20 text-amber-300 text-xs font-semibold px-2.5 py-1 rounded-lg border border-amber-500/30">60 câu</span>
+                        </div>
+                        <p class="text-xs text-slate-300">Thử thách toàn diện tất cả 5 đề trắc nghiệm Toán 9.</p>
+                    </div>
+                    <div class="mt-4 flex items-center text-xs font-semibold text-amber-400 group-hover:text-white">
+                        <span>Bắt đầu thách đấu</span> <i class="fa-solid fa-arrow-right ml-2 transition group-hover:translate-x-1"></i>
+                    </div>
+                </button>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl flex items-center space-x-3 text-xs text-slate-600">
+                <i class="fa-solid fa-circle-info text-indigo-600 text-lg"></i>
+                <p>Mỗi câu hỏi có giải thích chi tiết đáp án kèm theo. Hỗ trợ hiển thị công thức toán học chuẩn LaTeX.</p>
+            </div>
+        </div>
+
+        <!-- SCREEN 2: QUIZ SCREEN -->
+        <div id="quizScreen" class="hidden w-full max-w-4xl glass-card rounded-3xl p-5 sm:p-8 text-slate-800 shadow-2xl">
+            <!-- Quiz Top Bar -->
+            <div class="flex flex-wrap justify-between items-center mb-6 pb-4 border-b border-slate-200 gap-3">
+                <div class="flex items-center space-x-3">
+                    <button onclick="returnToHome()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold transition flex items-center space-x-1">
+                        <i class="fa-solid fa-arrow-left"></i> <span>Thoát</span>
+                    </button>
+                    <span id="testTitleBadge" class="bg-indigo-100 text-indigo-700 font-bold px-3 py-1 rounded-lg text-xs uppercase">Đề 1</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-1.5 bg-amber-50 text-amber-800 px-3 py-1.5 rounded-xl text-xs font-semibold border border-amber-200">
+                        <i class="fa-solid fa-clock"></i>
+                        <span id="timerDisplay">00:00</span>
+                    </div>
+                    <div class="text-xs font-semibold text-slate-500">
+                        Câu <span id="currentQuestionNum" class="text-indigo-600 font-bold text-sm">1</span> / <span id="totalQuestionsNum">12</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="w-full bg-slate-200 h-2 rounded-full mb-6 overflow-hidden">
+                <div id="quizProgressBar" class="bg-gradient-to-r from-indigo-500 to-pink-500 h-full w-0 transition-all duration-300"></div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="mb-6">
+                <div class="flex justify-between items-start mb-3">
+                    <h3 id="questionText" class="text-lg sm:text-xl font-bold text-slate-900 leading-snug">
+                        <!-- Question text inserted dynamically -->
+                    </h3>
+                    <button onclick="toggleFlag()" id="flagBtn" class="text-slate-400 hover:text-amber-500 p-2 transition" title="Đánh dấu câu hỏi cần xem lại">
+                        <i class="fa-regular fa-flag text-lg" id="flagIcon"></i>
+                    </button>
+                </div>
+
+                <!-- Geometric SVG Illustration container (if applicable) -->
+                <div id="svgIllustrationContainer" class="hidden my-4 p-4 bg-slate-50 border border-slate-200 rounded-2xl flex justify-center items-center">
+                    <!-- Dynamic SVG rendered here -->
+                </div>
+
+                <!-- Options List -->
+                <div id="optionsContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
+                    <!-- Options inserted dynamically -->
+                </div>
+            </div>
+
+            <!-- Explanation Box (Initially Hidden) -->
+            <div id="explanationBox" class="hidden mb-6 p-4 rounded-2xl bg-indigo-50 border border-indigo-100 text-sm">
+                <div class="flex items-center space-x-2 font-bold text-indigo-900 mb-1">
+                    <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                    <span>Lời giải chi tiết:</span>
+                </div>
+                <p id="explanationText" class="text-slate-700 text-xs sm:text-sm leading-relaxed"></p>
+            </div>
+
+            <!-- Quiz Navigation Bottom Bar -->
+            <div class="flex justify-between items-center pt-4 border-t border-slate-200">
+                <button onclick="prevQuestion()" id="prevBtn" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-xl text-xs font-semibold transition flex items-center space-x-2 disabled:opacity-40 disabled:cursor-not-allowed">
+                    <i class="fa-solid fa-chevron-left"></i> <span>Câu trước</span>
+                </button>
+                
+                <button onclick="openNavigatorModal()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-xl text-xs font-semibold transition flex items-center space-x-2">
+                    <i class="fa-solid fa-grip"></i> <span>Danh sách câu</span>
+                </button>
+
+                <button onclick="nextQuestion()" id="nextBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-xl text-xs font-semibold transition flex items-center space-x-2 shadow-md">
+                    <span id="nextBtnText">Câu tiếp</span> <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- SCREEN 3: RESULT SCREEN -->
+        <div id="resultScreen" class="hidden w-full max-w-3xl glass-card rounded-3xl p-6 sm:p-10 text-slate-800 shadow-2xl text-center">
+            <div class="w-20 h-20 bg-gradient-to-tr from-amber-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-3xl shadow-lg animate-bounce">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-1">Hoàn thành bài thi!</h2>
+            <p id="resultSubtitle" class="text-slate-600 text-sm mb-6">Bạn đã hoàn thành xuất sắc các câu hỏi ôn tập.</p>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+                <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl">
+                    <p class="text-xs text-slate-500 mb-1">Số câu đúng</p>
+                    <p id="resCorrectCount" class="text-2xl font-black text-emerald-600">0/12</p>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl">
+                    <p class="text-xs text-slate-500 mb-1">Điểm số</p>
+                    <p id="resScore" class="text-2xl font-black text-indigo-600">0.0</p>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl">
+                    <p class="text-xs text-slate-500 mb-1">Thời gian làm</p>
+                    <p id="resTime" class="text-2xl font-black text-purple-600">00:00</p>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl">
+                    <p class="text-xs text-slate-500 mb-1">Độ chính xác</p>
+                    <p id="resAccuracy" class="text-2xl font-black text-pink-600">0%</p>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-3">
+                <button onclick="reviewAnswers()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-xl font-semibold text-sm transition shadow-md flex items-center space-x-2">
+                    <i class="fa-solid fa-list-check"></i> <span>Xem lại chi tiết</span>
+                </button>
+                <button onclick="retakeQuiz()" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-semibold text-sm transition shadow-md flex items-center space-x-2">
+                    <i class="fa-solid fa-rotate-right"></i> <span>Làm lại đề này</span>
+                </button>
+                <button onclick="returnToHome()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 px-6 py-3 rounded-xl font-semibold text-sm transition flex items-center space-x-2">
+                    <i class="fa-solid fa-house"></i> <span>Về trang chủ</span>
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- QUESTION NAVIGATOR MODAL -->
+    <div id="navigatorModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 max-w-md w-full shadow-2xl border border-slate-100">
+            <div class="flex justify-between items-center mb-4 pb-2 border-b border-slate-100">
+                <h3 class="font-bold text-slate-900 text-lg">Danh sách câu hỏi</h3>
+                <button onclick="closeNavigatorModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            <div class="grid grid-cols-6 gap-2.5 max-h-64 overflow-y-auto p-1" id="navigatorGrid">
+                <!-- Nav buttons inserted dynamically -->
+            </div>
+            <div class="mt-6 flex justify-between items-center pt-3 border-t border-slate-100 text-xs text-slate-500">
+                <div class="flex items-center space-x-2">
+                    <span class="w-3 h-3 bg-emerald-500 rounded-full inline-block"></span> <span>Đã trả lời</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="w-3 h-3 bg-amber-500 rounded-full inline-block"></span> <span>Đánh dấu</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="w-3 h-3 bg-slate-200 rounded-full inline-block"></span> <span>Chưa làm</span>
+                </div>
+            </div>
+            <button onclick="closeNavigatorModal(); confirmSubmitQuiz();" class="w-full mt-4 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 rounded-xl text-sm transition shadow">
+                Nộp bài thi ngay
+            </button>
+        </div>
+    </div>
+
+    <!-- STATS MODAL -->
+    <div id="statsModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 max-w-md w-full shadow-2xl border border-slate-100">
+            <div class="flex justify-between items-center mb-4 pb-2 border-b border-slate-100">
+                <h3 class="font-bold text-slate-900 text-lg flex items-center"><i class="fa-solid fa-trophy text-amber-500 mr-2"></i> Thành tích cá nhân</h3>
+                <button onclick="closeStatsModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            <div id="statsContent" class="space-y-3 mb-6">
+                <!-- Stats loaded dynamically -->
+            </div>
+            <button onclick="closeStatsModal()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 rounded-xl text-sm transition shadow">
+                Đóng
+            </button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="text-center py-4 text-xs text-slate-400 bg-slate-900/40 border-t border-slate-800">
+        <p>Toán 9 Interactive Quiz App &bull; Ôn tập kiến thức Toán lớp 9 chuẩn SGK</p>
+    </footer>
+
+    <script>
+        // --- SOUND EFFECTS (WEB AUDIO API) ---
+        let soundEnabled = true;
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playSound(type) {
+            if (!soundEnabled) return;
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            if (type === 'click') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.05);
+                gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.05);
+            } else if (type === 'correct') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+                osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1); // E5
+                osc.frequency.setValueAtTime(783.99, audioCtx.currentTime + 0.2); // G5
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.4);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.4);
+            } else if (type === 'wrong') {
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(180, audioCtx.currentTime);
+                osc.frequency.setValueAtTime(120, audioCtx.currentTime + 0.15);
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.3);
+            }
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            const icon = document.getElementById('soundIcon');
+            if (soundEnabled) {
+                icon.className = 'fa-solid fa-volume-high';
+            } else {
+                icon.className = 'fa-solid fa-volume-xmark';
+            }
+        }
+
+        // --- COMPLETE 60 QUESTIONS DATA (5 TESTS, 12 QUESTIONS EACH) ---
+        const questionData = {
+            1: [
+                {
+                    q: "$x = 1$ và $x = \\frac{-3}{2}$ là hai nghiệm của phương trình nào sau đây?",
+                    options: [
+                        "$(x-1)(2x+3)=0$",
+                        "$(x+1)(2x+3)=0$",
+                        "$(x-1)(2x-3)=0$",
+                        "$(-x-1)(2x+3)=0$"
+                    ],
+                    correct: 0,
+                    explanation: "Ta giải phương trình tích: $(x-1)(2x+3)=0 \\Rightarrow x-1=0 \\Leftrightarrow x=1$ hoặc $2x+3=0 \\Leftrightarrow x = \\frac{-3}{2}$."
+                },
+                {
+                    q: "Phương trình nào sau đây là phương trình bậc nhất hai ẩn?",
+                    options: [
+                        "$3x^2+2y=-1$",
+                        "$2x+3y=5$",
+                        "$3x-2y-z=0$",
+                        "\\(\\frac{1}{x}+y=3\\)"
+                    ],
+                    correct: 1,
+                    explanation: "Phương trình bậc nhất hai ẩn có dạng $ax+by=c$ với $a, b$ không đồng thời bằng 0. Vậy $2x+3y=5$ là phương trình bậc nhất hai ẩn."
+                },
+                {
+                    q: "Hệ phương trình nào dưới đây không là hệ phương trình bậc nhất hai ẩn?",
+                    options: [
+                        "\\(\\begin{cases}2x+3y=7\\\\ x-y^2=6\\end{cases}\\)",
+                        "\\(\\begin{cases}3x+2y=13\\\\ 2x-y=-3\\end{cases}\\)",
+                        "\\(\\begin{cases}x+y=1\\\\ 3x=12\\end{cases}\\)",
+                        "\\(\\begin{cases}x+2y=6\\\\ 0x-5y=10\\end{cases}\\)"
+                    ],
+                    correct: 0,
+                    explanation: "Hệ ở phương án A có chứa $y^2$ nên không phải là hệ phương trình bậc nhất hai ẩn."
+                },
+                {
+                    q: "Hệ phương trình \\(\\begin{cases}2x+3y=-5\\\\ -4x-5y=9\\end{cases}\\) nhận cặp số nào sau đây là nghiệm?",
+                    options: ["(-1; 1)", "(-1; -1)", "(1; 1)", "(1; -1)"],
+                    correct: 1,
+                    explanation: "Thay $x=-1, y=-1$ vào hệ: $2(-1)+3(-1)=-5$ và $-4(-1)-5(-1)=9$, thỏa mãn cả hai phương trình."
+                },
+                {
+                    q: "Cặp số \\((2; -3)\\) là nghiệm của hệ phương trình nào?",
+                    options: [
+                        "\\(\\begin{cases}2x-y=7\\\\ x+2y=-4\\end{cases}\\)",
+                        "\\(\\begin{cases}\\frac{3x}{2}+y=0\\\\ x-y=-1\\end{cases}\\)",
+                        "\\(\\begin{cases}0x-2y=6\\\\ 2x+0y=1\\end{cases}\\)",
+                        "\\(\\begin{cases}2x+y=7\\\\ x-y=5\\end{cases}\\)"
+                    ],
+                    correct: 0,
+                    explanation: "Thay $x=2, y=-3$ vào hệ A ta có: $2(2)-(-3) = 7$ và $2+2(-3) = -4$ (đúng)."
+                },
+                {
+                    q: "Hệ phương trình \\(\\begin{cases}2x+3y=3\\\\ -4x-5y=9\\end{cases}\\) nhận cặp số nào sau đây là nghiệm?",
+                    options: ["(-21; 15)", "(21; -15)", "(1; 1)", "(1; -1)"],
+                    correct: 0,
+                    explanation: "Giải hệ phương trình ta tìm được $x = -21$ và $y = 15$."
+                },
+                {
+                    q: "Tam giác MPQ vuông tại P. Ta có:",
+                    options: [
+                        "\\(\\sin M = \\frac{MP}{MQ}\\)",
+                        "\\(\\sin M = \\frac{PQ}{MQ}\\)",
+                        "\\(\\sin M = \\frac{MP}{QP}\\)",
+                        "\\(\\sin M = \\frac{MQ}{MP}\\)"
+                    ],
+                    correct: 1,
+                    explanation: "Trong tam giác vuông, $\\sin$ góc $M$ bằng cạnh đối chia cạnh huyền: $\\sin M = \\frac{PQ}{MQ}$."
+                },
+                {
+                    q: "Cho hình vẽ tam giác vuông DEF vuông tại D với $DE=3$, $DF=4$, $EF=5$. Chọn khẳng định đúng:",
+                    options: [
+                        "\\(\\sin E = \\frac{3}{5}\\)",
+                        "\\(\\cos F = \\frac{4}{5}\\)",
+                        "\\(\\cos E = \\frac{4}{5}\\)",
+                        "\\(\\sin F = \\frac{3}{4}\\)"
+                    ],
+                    correct: 1,
+                    svgType: "rightTriangleDEFFull",
+                    explanation: "Ta có $\\cos F = \\frac{\\text{Kề}}{\\text{Huyền}} = \\frac{DF}{EF} = \\frac{4}{5}$."
+                },
+                {
+                    q: "Cho $\\Delta ABC$ vuông tại A. Tính $\\tan C$ biết \\(\\cot B = 2\\).",
+                    options: ["\\(\\tan C = \\frac{1}{4}\\)", "\\(\\tan C = 4\\)", "\\(\\tan C = 2\\)", "\\(\\cot B = 2\\)"],
+                    correct: 2,
+                    explanation: "Trong tam giác vuông $ABC$ vuông tại A, hai góc B và C phụ nhau nên $\\cot B = \\tan C = 2$."
+                },
+                {
+                    q: "Cho $\\Delta ABC$ vuông tại A. Biết $BC=10\\text{cm}$, $\\hat{B}=60^\\circ$. Độ dài của đoạn thẳng AC là:",
+                    options: ["\\(3\\sqrt{3}\\text{cm}\\)", "\\(15\\text{cm}\\)", "\\(5\\sqrt{3}\\text{cm}\\)", "\\(5\\text{cm}\\)"],
+                    correct: 2,
+                    explanation: "$AC = BC \\cdot \\sin B = 10 \\cdot \\sin 60^\\circ = 10 \\cdot \\frac{\\sqrt{3}}{2} = 5\\sqrt{3}\\text{cm}$."
+                },
+                {
+                    q: "Cho $\\Delta ABC$ vuông tại A. Khi đó:",
+                    options: [
+                        "\\(AB = AC \\cdot \\tan B\\)",
+                        "\\(AB = BC \\cdot \\tan B\\)",
+                        "\\(AB = BC \\cdot \\tan C\\)",
+                        "\\(AB = AC \\cdot \\tan C\\)"
+                    ],
+                    correct: 3,
+                    explanation: "Ta có $\\tan C = \\frac{AB}{AC} \\Rightarrow AB = AC \\cdot \\tan C$."
+                },
+                {
+                    q: "Giá trị $\\cos 45^\\circ$ bằng:",
+                    options: ["\\(\\frac{\\sqrt{3}}{4}\\)", "\\(\\frac{\\sqrt{3}}{2}\\)", "\\(\\frac{\\sqrt{2}}{2}\\)", "\\(\\frac{1}{2}\\)"],
+                    correct: 2,
+                    explanation: "Giá trị lượng giác đặc biệt: $\\cos 45^\\circ = \\frac{\\sqrt{2}}{2}$."
+                }
+            ],
+            2: [
+                {
+                    q: "Phương trình nào sau đây là phương trình bậc nhất hai ẩn?",
+                    options: ["$3x^2-2y=5$", "$3x-2y=5$", "\\(3x-\\frac{2}{y}=5\\)", "$3x-2y^2=5$"],
+                    correct: 1,
+                    explanation: "Phương trình bậc nhất hai ẩn có dạng $ax+by=c$. Vậy $3x-2y=5$ là phương trình bậc nhất hai ẩn."
+                },
+                {
+                    q: "Hệ phương trình nào dưới đây là hệ phương trình bậc nhất hai ẩn?",
+                    options: [
+                        "\\(\\begin{cases}2x+y=5\\\\ x^2-y=1\\end{cases}\\)",
+                        "\\(\\begin{cases}2x-y=5\\\\ x+y=4\\end{cases}\\)",
+                        "\\(\\begin{cases}xy=1\\\\ 3x+y=2\\end{cases}\\)",
+                        "\\(\\begin{cases}\\frac{1}{x}+2y=6\\\\ 3x-5y=10\\end{cases}\\)"
+                    ],
+                    correct: 1,
+                    explanation: "Hệ B gồm hai phương trình bậc nhất hai ẩn $x$ và $y$."
+                },
+                {
+                    q: "Hệ phương trình \\(\\begin{cases}3x+y=5\\\\ 2x-y=23\\end{cases}\\) nhận cặp số nào sau đây là nghiệm?",
+                    options: ["(1; 3)", "(-2; 1)", "(3; 1)", "(4; -7)"],
+                    correct: 3,
+                    explanation: "Giải hệ phương trình ta được $x=4, y=-7$. Thay vào hệ thỏa mãn cả hai phương trình."
+                },
+                {
+                    q: "Cặp số \\((x;y)=(1;3)\\) là nghiệm của hệ phương trình nào sau đây?",
+                    options: [
+                        "\\(\\begin{cases}x+y=4\\\\ 2x-3y=-7\\end{cases}\\)",
+                        "\\(\\begin{cases}\\frac{1}{2}x+2y=8\\\\ x-y=9\\end{cases}\\)",
+                        "\\(\\begin{cases}5x-y=1\\\\ x-4y=5\\end{cases}\\)",
+                        "\\(\\begin{cases}6x-y=8\\\\ x-7y=-4\\end{cases}\\)"
+                    ],
+                    correct: 0,
+                    explanation: "Thay $x=1, y=3$ vào hệ A: $1+3=4$ và $2(1)-3(3)=-7$ (đúng)."
+                },
+                {
+                    q: "Hệ phương trình \\(\\begin{cases}-2x-y=3\\\\ 4x+2y=-6\\end{cases}\\) có số nghiệm là:",
+                    options: ["Vô nghiệm", "Vô số nghiệm", "Có nghiệm duy nhất (1; 3)", "Có nghiệm duy nhất \\((\\frac{1}{4}; \\frac{1}{2})\\)"],
+                    correct: 1,
+                    explanation: "Hai phương trình tương đương nhau ($4x+2y=-6 \\Leftrightarrow -2x-y=3$) nên hệ có vô số nghiệm."
+                },
+                {
+                    q: "Phương trình $(x+5)(x-2)=0$ có nghiệm là:",
+                    options: ["$x=0$", "$x=2$", "$x=-5$ và $x=2$", "$x=5$ và $x=-2$"],
+                    correct: 2,
+                    explanation: "$(x+5)(x-2)=0 \\Leftrightarrow x+5=0$ hoặc $x-2=0 \\Leftrightarrow x=-5$ hoặc $x=2$."
+                },
+                {
+                    q: "Cho tam giác DEF vuông tại D. Khi đó \\(\\sin \\hat{E}\\) bằng:",
+                    options: ["\\(\\frac{FE}{ED}\\)", "\\(\\frac{DF}{EF}\\)", "\\(\\frac{DE}{EF}\\)", "\\(\\frac{EF}{DF}\\)"],
+                    correct: 1,
+                    explanation: "$\\sin \\hat{E} = \\frac{\\text{Đối}}{\\text{Huyền}} = \\frac{DF}{EF}$."
+                },
+                {
+                    q: "Cho tam giác MNP vuông tại M. Khi đó \\(\\tan \\widehat{MNP}\\) bằng:",
+                    options: ["\\(\\frac{MN}{NP}\\)", "\\(\\frac{MP}{NP}\\)", "\\(\\frac{MN}{MP}\\)", "\\(\\frac{MP}{MN}\\)"],
+                    correct: 3,
+                    explanation: "$\\tan \\hat{N} = \\frac{\\text{Đối}}{\\text{Kề}} = \\frac{MP}{MN}$."
+                },
+                {
+                    q: "Cho tam giác ABC vuông tại A có $AB=5, AC=12$. Khi đó \\(\\cos \\hat{B}\\) bằng:",
+                    options: ["\\(\\frac{13}{12}\\)", "\\(\\frac{12}{13}\\)", "\\(\\frac{13}{5}\\)", "\\(\\frac{5}{13}\\)"],
+                    correct: 3,
+                    explanation: "Cạnh huyền $BC = \\sqrt{5^2+12^2} = 13$. Do đó $\\cos B = \\frac{AB}{BC} = \\frac{5}{13}$."
+                },
+                {
+                    q: "Cho tam giác ABC vuông tại C có $BC=10\\text{cm}$ và $\\hat{B}=30^\\circ$. Tính độ dài đoạn AC?",
+                    options: ["$5\\text{cm}$", "$5\\sqrt{3}\\text{cm}$", "$10\\sqrt{3}\\text{cm}$", "\\(\\frac{10\\sqrt{3}}{3}\\text{cm}\\)"],
+                    correct: 0,
+                    explanation: "Trong tam giác vuông tại C với $\\hat{B}=30^\\circ$, cạnh đối diện góc $30^\\circ$ bằng nửa cạnh huyền hoặc tính theo sin/tan tùy quy ước đề: $AC = BC \\cdot \\sin 30^\\circ = 10 \\cdot \\frac{1}{2} = 5\\text{cm}$."
+                },
+                {
+                    q: "Phát biểu nào sau đây là đúng?",
+                    options: ["\\(\\sin 30^\\circ = \\cos 60^\\circ\\)", "\\(\\sin 30^\\circ = \\sin 60^\\circ\\)", "\\(\\cos 30^\\circ = \\cot 30^\\circ\\)", "\\(\\sin 30^\\circ = \\tan 60^\\circ\\)"],
+                    correct: 0,
+                    explanation: "Hai góc phụ nhau có $\\sin$ góc này bằng $\\cos$ góc kia: $\\sin 30^\\circ = \\cos 60^\\circ = \\frac{1}{2}$."
+                },
+                {
+                    q: "Cho góc nhọn $\\alpha$ thỏa mãn \\(\\sin \\alpha = \\frac{3}{5}\\). Khi đó \\(\\tan \\alpha\\) bằng:",
+                    options: ["\\(\\frac{5}{4}\\)", "\\(\\frac{4}{3}\\)", "\\(\\frac{3}{4}\\)", "\\(\\frac{4}{5}\\)"],
+                    correct: 2,
+                    explanation: "Ta có $\\cos \\alpha = \\sqrt{1-\\sin^2\\alpha} = \\frac{4}{5}$, suy ra $\\tan \\alpha = \\frac{\\sin \\alpha}{\\cos \\alpha} = \\frac{3}{4}$."
+                }
+            ],
+            3: [
+                {
+                    q: "$x=3$ và $x=-2$ là hai nghiệm của phương trình nào sau đây?",
+                    options: ["$(x-3)(x+2)=0$", "$(x+3)(x-2)=0$", "$(x-3)(x-2)=0$", "$(x+3)(x+2)=0$"],
+                    correct: 0,
+                    explanation: "Phương trình $(x-3)(x+2)=0$ có nghiệm $x=3$ và $x=-2$."
+                },
+                {
+                    q: "Phương trình nào sau đây là phương trình bậc nhất hai ẩn?",
+                    options: ["$2x^2+y=3$", "$0x+0y=4$", "$3x-y=2$", "$x+2y-z=0$"],
+                    correct: 2,
+                    explanation: "$3x-y=2$ là phương trình bậc nhất hai ẩn."
+                },
+                {
+                    q: "Hệ phương trình nào dưới đây không là hệ phương trình bậc nhất hai ẩn?",
+                    options: [
+                        "\\(\\begin{cases}2x+y=5\\\\ x-y=1\\end{cases}\\)",
+                        "\\(\\begin{cases}x^2-y=3\\\\ 2x+y=0\\end{cases}\\)",
+                        "\\(\\begin{cases}3x=-1\\\\ 2y=4\\end{cases}\\)",
+                        "\\(\\begin{cases}x+2y=0\\\\ 3x-y=5\\end{cases}\\)"
+                    ],
+                    correct: 1,
+                    explanation: "Hệ B chứa $x^2$ nên không phải hệ bậc nhất hai ẩn."
+                },
+                {
+                    q: "Hệ phương trình \\(\\begin{cases}x+y=4\\\\ 2x-y=5\\end{cases}\\) nhận cặp số nào sau đây là nghiệm?",
+                    options: ["(1; 3)", "(3; 1)", "(2; 2)", "(0; 4)"],
+                    correct: 1,
+                    explanation: "Thay $x=3, y=1$ vào hệ ta được $3+1=4$ và $2(3)-1=5$ (thỏa mãn)."
+                },
+                {
+                    q: "Cặp số \\((-1; 2)\\) là nghiệm của hệ phương trình nào?",
+                    options: [
+                        "\\(\\begin{cases}x+y=1\\\\ 2x-y=-4\\end{cases}\\)",
+                        "\\(\\begin{cases}x-y=3\\\\ 2x+y=0\\end{cases}\\)",
+                        "\\(\\begin{cases}2x+y=4\\\\ x-y=-3\\end{cases}\\)",
+                        "\\(\\begin{cases}x+2y=1\\\\ 3x-y=-5\\end{cases}\\)"
+                    ],
+                    correct: 0,
+                    explanation: "Thay $(-1; 2)$ vào hệ A: $-1+2=1$ và $2(-1)-2=-4$ (thỏa mãn)."
+                },
+                {
+                    q: "Hệ phương trình \\(\\begin{cases}3x+2y=7\\\\ 2x-y=0\\end{cases}\\) nhận cặp số nào sau đây là nghiệm?",
+                    options: ["(1; 2)", "(2; 1)", "(1; 1)", "(0; 0)"],
+                    correct: 0,
+                    explanation: "Thay $(1; 2)$ vào hệ: $3(1)+2(2)=7$ và $2(1)-2=0$ (thỏa mãn)."
+                },
+                {
+                    q: "Tam giác ABC vuông tại A. Khẳng định nào sau đây đúng?",
+                    options: [
+                        "\\(\\sin B = \\frac{AC}{AB}\\)",
+                        "\\(\\sin B = \\frac{AC}{BC}\\)",
+                        "\\(\\sin B = \\frac{AB}{BC}\\)",
+                        "\\(\\sin B = \\frac{BC}{AC}\\)"
+                    ],
+                    correct: 1,
+                    explanation: "$\\sin B = \\frac{\\text{Đối}}{\\text{Huyền}} = \\frac{AC}{BC}$."
+                },
+                {
+                    q: "Cho tam giác DEF vuông tại D có $DE=3\\text{cm}, DF=4\\text{cm}$. Khẳng định nào sau đây đúng?",
+                    options: ["$EF = 5\\text{cm}$", "$EF = 7\\text{cm}$", "$EF = 25\\text{cm}$", "$EF = 1\\text{cm}$"],
+                    correct: 0,
+                    explanation: "Theo định lý Pythagore: $EF = \\sqrt{3^2+4^2} = 5\\text{cm}$."
+                },
+                {
+                    q: "Cho tam giác ABC vuông tại A. Tính \\(\\cos B\\) biết $AB=5, BC=13$.",
+                    options: ["\\(\\cos B = \\frac{12}{13}\\)", "\\(\\cos B = \\frac{5}{12}\\)", "\\(\\cos B = \\frac{5}{13}\\)", "\\(\\cos B = \\frac{13}{5}\\)"],
+                    correct: 2,
+                    explanation: "\\(\\cos B = \\frac{\\text{Kề}}{\\text{Huyền}} = \\frac{AB}{BC} = \\frac{5}{13}\\)."
+                },
+                {
+                    q: "Cho tam giác MNP vuông tại M. Biết góc $N=30^\\circ, NP=10\\text{cm}$. Độ dài đoạn MP là:",
+                    options: ["$5\\sqrt{3}\\text{cm}$", "$2.5\\text{cm}$", "$10\\text{cm}$", "$5\\text{cm}$"],
+                    correct: 3,
+                    explanation: "$MP = NP \\cdot \\sin 30^\\circ = 10 \\cdot \\frac{1}{2} = 5\\text{cm}$."
+                },
+                {
+                    q: "Cho tam giác ABC vuông tại A. Đẳng thức nào sau đây đúng?",
+                    options: ["\\(\\tan B = \\cot C\\)", "\\(\\sin B = \\sin C\\)", "\\(\\cos B = \\cos C\\)", "\\(\\tan B = \\tan C\\)"],
+                    correct: 0,
+                    explanation: "Trong tam giác vuông, góc này bằng phụ góc kia nên $\\tan B = \\cot C$."
+                },
+                {
+                    q: "Giá trị của biểu thức \\(\\sin 30^\\circ + \\cos 60^\\circ\\) bằng:",
+                    options: ["\\(\\frac{1}{2}\\)", "\\(\\frac{\\sqrt{3}}{2}\\)", "$1$", "\\(\\sqrt{3}\\)"],
+                    correct: 2,
+                    explanation: "\\(\\sin 30^\\circ + \\cos 60^\\circ = \\frac{1}{2} + \\frac{1}{2} = 1\\)."
+                }
+            ],
+            4: [
+                {
+                    q: "Phương trình nào sau đây là phương trình bậc nhất hai ẩn?",
+                    options: ["\\(4x+\\frac{1}{y}=1.2\\)", "$0x+0y=3$", "$8x+7y=9$", "$-3x^2+2y=1$"],
+                    correct: 2,
+                    explanation: "$8x+7y=9$ là phương trình bậc nhất hai ẩn."
+                },
+                {
+                    q: "Hệ phương trình nào dưới đây không là hệ hai phương trình bậc nhất hai ẩn?",
+                    options: [
+                        "\\(\\begin{cases}x+0y=7\\\\ 8x+5y=21\\end{cases}\\)",
+                        "\\(\\begin{cases}5x+2y=13\\\\ 4x-2y=-4\\end{cases}\\)",
+                        "\\(\\begin{cases}5x+3y=3\\\\ 2x-3y^2=6\\end{cases}\\)",
+                        "\\(\\begin{cases}0x+3y=9\\\\ 4x-6y=11\\end{cases}\\)"
+                    ],
+                    correct: 2,
+                    explanation: "Hệ C chứa $y^2$ nên không phải hệ bậc nhất hai ẩn."
+                },
+                {
+                    q: "Hệ phương trình \\(\\begin{cases}3x+2y=-8\\\\ -3x-5y=11\\end{cases}\\) nhận cặp số nào sau đây là nghiệm?",
+                    options: ["(-1; 1)", "(-2; -1)", "(-1; -2)", "(1; -1)"],
+                    correct: 1,
+                    explanation: "Thay $(-2; -1)$ vào hệ: $3(-2)+2(-1)=-8$ và $-3(-2)-5(-1)=11$ (thỏa mãn)."
+                },
+                {
+                    q: "Cho hệ phương trình \\(\\begin{cases}x-2y=5\\\\ 3x-y=-5\\end{cases}\\). Cặp số nào là nghiệm?",
+                    options: ["(-3; -4)", "(-3; 4)", "(3; -4)", "(-4; -3)"],
+                    correct: 0,
+                    explanation: "Thay $(-3; -4)$ vào hệ: $-3-2(-4)=5$ và $3(-3)-(-4)=-5$ (thỏa mãn)."
+                },
+                {
+                    q: "Hệ phương trình \\(\\begin{cases}3x-y=-4\\\\ 6x-2y=-8\\end{cases}\\) có số nghiệm là:",
+                    options: ["Vô nghiệm", "Vô số nghiệm", "Có nghiệm duy nhất (0; 2)", "Có nghiệm duy nhất \\((-\\frac{3}{4}; \\frac{1}{2})\\)"],
+                    correct: 1,
+                    explanation: "Hai phương trình tương đương nên hệ có vô số nghiệm."
+                },
+                {
+                    q: "Phương trình $(x+5)(x-3)=0$ có nghiệm là:",
+                    options: ["$x=5$ và $x=3$", "$x=-5$ và $x=-3$", "$x=-5$ và $x=3$", "$x=5$ và $x=-3$"],
+                    correct: 2,
+                    explanation: "$x+5=0 \\Leftrightarrow x=-5$ hoặc $x-3=0 \\Leftrightarrow x=3$."
+                },
+                {
+                    q: "Cho $\\Delta DEF$ vuông tại D. Khi đó \\(\\sin \\widehat{DEF}\\) bằng:",
+                    options: ["\\(\\frac{DE}{EF}\\)", "\\(\\frac{EF}{DF}\\)", "\\(\\frac{DF}{DE}\\)", "\\(\\frac{DF}{EF}\\)"],
+                    correct: 3,
+                    explanation: "\\(\\sin \\hat{E} = \\frac{DF}{EF}\\)."
+                },
+                {
+                    q: "Cho $\\Delta MNP$ vuông tại M. Khi đó \\(\\tan \\widehat{MPN}\\) bằng:",
+                    options: ["\\(\\frac{MN}{MP}\\)", "\\(\\frac{MP}{NP}\\)", "\\(\\frac{MN}{NP}\\)", "\\(\\frac{MP}{MN}\\)"],
+                    correct: 0,
+                    explanation: "\\(\\tan P = \\frac{MN}{MP}\\)."
+                },
+                {
+                    q: "Cho $\\Delta ABC$ vuông tại A có $AB=8, BC=10$. Khi đó \\(\\cot C\\) bằng:",
+                    options: ["\\(\\frac{4}{3}\\)", "\\(\\frac{4}{5}\\)", "\\(\\frac{3}{5}\\)", "\\(\\frac{3}{4}\\)"],
+                    correct: 3,
+                    explanation: "Ta có $AC = \\sqrt{10^2-8^2} = 6$. Khi đó $\\cot C = \\frac{AC}{AB} = \\frac{6}{8} = \\frac{3}{4}$."
+                },
+                {
+                    q: "Cho $\\Delta ABC$ vuông tại C, có $BC=1.2\\text{cm}, AC=0.9\\text{cm}$. Tính $\\sin B, \\cos B$?",
+                    options: [
+                        "\\(\\sin B = 0.6; \\cos B = 0.4\\)",
+                        "\\(\\sin B = 0.8; \\cos B = 0.6\\)",
+                        "\\(\\sin B = 0.4; \\cos B = 0.8\\)",
+                        "\\(\\sin B = 0.6; \\cos B = 0.8\\)"
+                    ],
+                    correct: 3,
+                    explanation: "Cạnh huyền $AB = \\sqrt{1.2^2+0.9^2} = 1.5\\text{cm}$. $\\sin B = \\frac{AC}{AB} = \\frac{0.9}{1.5} = 0.6$; $\\cos B = \\frac{BC}{AB} = \\frac{1.2}{1.5} = 0.8$."
+                },
+                {
+                    q: "Phát biểu nào sau đây là đúng?",
+                    options: [
+                        "\\(\\sin 35^\\circ = \\cot 55^\\circ\\)",
+                        "\\(\\sin 35^\\circ = \\cos 55^\\circ\\)",
+                        "\\(\\cos 35^\\circ = \\cot 55^\\circ\\)",
+                        "\\(\\sin 35^\\circ = \\tan 55^\\circ\\)"
+                    ],
+                    correct: 1,
+                    explanation: "Hai góc phụ nhau: $\\sin 35^\\circ = \\cos(90^\\circ - 35^\\circ) = \\cos 55^\\circ$."
+                },
+                {
+                    q: "Cho $\\Delta MNP$ vuông tại M. Hệ thức nào sau đây đúng?",
+                    options: [
+                        "\\(MN = MP \\cdot \\tan P\\)",
+                        "\\(MN = MP \\cdot \\cos P\\)",
+                        "\\(MN = MP \\cdot \\cot P\\)",
+                        "\\(MN = MP \\cdot \\sin P\\)"
+                    ],
+                    correct: 0,
+                    explanation: "$\\tan P = \\frac{MN}{MP} \\Rightarrow MN = MP \\cdot \\tan P$."
+                }
+            ],
+            5: [
+                {
+                    q: "Phương trình nào sau đây không là phương trình bậc nhất hai ẩn?",
+                    options: ["$5x+7y=1.2$", "$0x+5y=3$", "$8x+0y=9$", "$4x^2+5y=7$"],
+                    correct: 3,
+                    explanation: "Phương trình D có chứa $x^2$ nên không phải phương trình bậc nhất hai ẩn."
+                },
+                {
+                    q: "Hệ phương trình nào dưới đây là hệ phương trình bậc nhất hai ẩn?",
+                    options: [
+                        "\\(\\begin{cases}2x+3y=7\\\\ x-y^2=6\\end{cases}\\)",
+                        "\\(\\begin{cases}3x+2y=13\\\\ 2x-y=-3\\end{cases}\\)",
+                        "\\(\\begin{cases}0x+0y=1\\\\ 3x+5=12\\end{cases}\\)",
+                        "\\(\\begin{cases}\\frac{1}{x}+2y=6\\\\ 3x-5y=10\\end{cases}\\)"
+                    ],
+                    correct: 1,
+                    explanation: "Hệ B là hệ phương trình bậc nhất hai ẩn."
+                },
+                {
+                    q: "Hệ phương trình \\(\\begin{cases}2x+3y=-5\\\\ -4x-5y=9\\end{cases}\\) nhận cặp số nào sauH đây là nghiệm?",
+                    options: ["(1; 1)", "(-1; 1)", "(-1; -1)", "(1; -1)"],
+                    correct: 2,
+                    explanation: "Thay $(-1; -1)$ vào hệ ta thấy thỏa mãn cả hai phương trình."
+                },
+                {
+                    q: "Cho hệ phương trình \\(\\begin{cases}4x-6y=8\\\\ 2x-4y=5\\end{cases}\\). Cặp số nào là nghiệm?",
+                    options: ["(-2; 1)", "\\((\\frac{1}{2}; -1)\\)", "\\((1; \\frac{1}{2})\\)", "(1; -2)"],
+                    correct: 1,
+                    explanation: "Thay $(\\frac{1}{2}; -1)$ vào hệ: $4(\\frac{1}{2})-6(-1)=8$ và $2(\\frac{1}{2})-4(-1)=5$ (thỏa mãn)."
+                },
+                {
+                    q: "Hệ phương trình \\(\\begin{cases}2x-y=-3\\\\ 4x-2y=-4\\end{cases}\\) có số nghiệm là:",
+                    options: ["Vô nghiệm", "Vô số nghiệm", "Có nghiệm duy nhất (0; 2)", "Có nghiệm duy nhất \\((-\\frac{5}{4}; \\frac{11}{2})\\)"],
+                    correct: 0,
+                    explanation: "Ta có $\\frac{2}{4} = \\frac{-1}{-2} \\neq \\frac{-3}{-4}$ nên hệ vô nghiệm."
+                },
+                {
+                    q: "Phương trình $(x+3)(x-2)=0$ có nghiệm là:",
+                    options: ["$x=-3$", "$x=2$", "$x=-3$ và $x=2$", "$x=3$ và $x=-2$"],
+                    correct: 2,
+                    explanation: "Nghiệm là $x=-3$ và $x=2$."
+                },
+                {
+                    q: "Cho tam giác DEF vuông tại D, \\(\\widehat{DEF} = \\alpha\\). Khi đó \\(\\cos \\alpha\\) bằng:",
+                    options: ["\\(\\frac{DF}{DE}\\)", "\\(\\frac{DF}{EF}\\)", "\\(\\frac{DE}{EF}\\)", "\\(\\frac{EF}{DF}\\)"],
+                    correct: 2,
+                    explanation: "\\(\\cos \\alpha = \\frac{\\text{Kề}}{\\text{Huyền}} = \\frac{DE}{EF}\\)."
+                },
+                {
+                    q: "Cho tam giác MNP vuông tại M. Khi đó \\(\\tan \\widehat{MNP}\\) bằng:",
+                    options: ["\\(\\frac{MN}{NP}\\)", "\\(\\frac{MP}{NP}\\)", "\\(\\frac{MN}{MP}\\)", "\\(\\frac{MP}{MN}\\)"],
+                    correct: 3,
+                    explanation: "\\(\\tan N = \\frac{MP}{MN}\\)."
+                },
+                {
+                    q: "Cho tam giác ABC vuông tại A có $AB=2, AC=3$. Tỉ số lượng giác $\\cot$ của góc C là:",
+                    options: ["\\(\\frac{2}{\\sqrt{13}}\\{}", "\\(\\frac{\\sqrt{13}}{2}\\)", "\\(\\frac{2}{3}\\)", "\\(\\frac{3}{2}\\)"],
+                    correct: 3,
+                    svgType: "rightTriangleABC23",
+                    explanation: "\\(\\cot C = \\frac{AC}{AB} = \\frac{3}{2}\\)."
+                },
+                {
+                    q: "Cho tam giác ABC vuông tại C có $BC=1.2\\text{cm}, AC=0.9\\text{cm}$. Tính $\\sin B, \\cos B$?",
+                    options: [
+                        "\\(\\sin B = 0.6; \\cos B = 0.8\\)",
+                        "\\(\\sin B = 0.8; \\cos B = 0.6\\)",
+                        "\\(\\sin B = 0.4; \\cos B = 0.8\\)",
+                        "\\(\\sin B = 0.6; \\cos B = 0.4\\)"
+                    ],
+                    correct: 0,
+                    explanation: "$AB = 1.5\\text{cm}$. $\\sin B = \\frac{AC}{AB} = 0.6$, $\\cos B = \\frac{BC}{AB} = 0.8$."
+                },
+                {
+                    q: "Phát biểu nào sau đây là đúng?",
+                    options: [
+                        "\\(\\sin 30^\\circ = \\cos 60^\\circ\\)",
+                        "\\(\\sin 30^\\circ = \\sin 60^\\circ\\)",
+                        "\\(\\cos 30^\\circ = \\cot 30^\\circ\\)",
+                        "\\(\\sin 30^\\circ = \\tan 60^\\circ\\)"
+                    ],
+                    correct: 0,
+                    explanation: "\\(\\sin 30^\\circ = \\cos 60^\\circ = \\frac{1}{2}\\)."
+                },
+                {
+                    q: "Cho tam giác MNP vuông tại M. Hệ thức nào sau đây đúng?",
+                    options: [
+                        "\\(MP = NP \\cdot \\tan P\\)",
+                        "\\(MP = NP \\cdot \\cos P\\)",
+                        "\\(MP = NP \\cdot \\cot P\\)",
+                        "\\(MP = NP \\cdot \\sin P\\)"
+                    ],
+                    correct: 3,
+                    explanation: "\\(\\sin P = \\frac{MP}{NP} \\Rightarrow MP = NP \\cdot \\sin P\\)."
+                }
+            ]
+        };
+
+        // --- STATE VARIABLES ---
+        let currentTestId = 1;
+        let currentQuestions = [];
+        let currentIndex = 0;
+        let userAnswers = {}; // index -> optionIndex
+        let flaggedQuestions = new Set();
+        let timerInterval = null;
+        let secondsElapsed = 0;
+        let quizActive = false;
+        let isReviewMode = false;
+
+        // --- SVG ILLUSTRATION RENDERER ---
+        function renderSvgIllustration(svgType) {
+            const container = document.getElementById('svgIllustrationContainer');
+            container.innerHTML = '';
+            if (!svgType) {
+                container.classList.add('hidden');
+                return;
+            }
+            container.classList.remove('hidden');
+
+            if (svgType === 'rightTriangleDEFFull') {
+                container.innerHTML = `
+                    <svg width="220" height="150" viewBox="0 0 220 150" class="overflow-visible">
+                        <polygon points="30,130 30,30 180,130" fill="none" stroke="#4f46e5" stroke-width="2.5" stroke-linejoin="round"/>
+                        <rect x="30" y="110" width="20" height="20" fill="none" stroke="#4f46e5" stroke-width="2"/>
+                        <text x="15" y="85" font-size="14" font-weight="bold" fill="#334155">3</text>
+                        <text x="100" y="145" font-size="14" font-weight="bold" fill="#334155">?</text>
+                        <text x="105" y="75" font-size="14" font-weight="bold" fill="#334155">5</text>
+                        <text x="10" y="145" font-size="14" font-weight="bold" fill="#1e293b">D</text>
+                        <text x="10" y="25" font-size="14" font-weight="bold" fill="#1e293b">E</text>
+                        <text x="190" y="145" font-size="14" font-weight="bold" fill="#1e293b">F</text>
+                    </svg>
+                `;
+            } else if (svgType === 'rightTriangleABC23') {
+                container.innerHTML = `
+                    <svg width="220" height="150" viewBox="0 0 220 150" class="overflow-visible">
+                        <polygon points="30,130 30,30 180,130" fill="none" stroke="#4f46e5" stroke-width="2.5" stroke-linejoin="round"/>
+                        <rect x="30" y="110" width="20" height="20" fill="none" stroke="#4f46e5" stroke-width="2"/>
+                        <text x="15" y="85" font-size="14" font-weight="bold" fill="#334155">2</text>
+                        <text x="105" y="75" font-size="14" font-weight="bold" fill="#334155">3</text>
+                        <text x="10" y="145" font-size="14" font-weight="bold" fill="#1e293b">A</text>
+                        <text x="10" y="25" font-size="14" font-weight="bold" fill="#1e293b">B</text>
+                        <text x="190" y="145" font-size="14" font-weight="bold" fill="#1e293b">C</text>
+                    </svg>
+                `;
+            }
+        }
+
+        // --- QUIZ FLOW FUNCTIONS ---
+        function startQuiz(testId) {
+            playSound('click');
+            isReviewMode = false;
+            userAnswers = {};
+            flaggedQuestions.clear();
+            secondsElapsed = 0;
+
+            if (testId === 'all') {
+                currentTestId = 'all';
+                currentQuestions = [];
+                for (let d = 1; d <= 5; d++) {
+                    currentQuestions = currentQuestions.concat(questionData[d]);
+                }
+                document.getElementById('testTitleBadge').innerText = "Tổng hợp (60 câu)";
+            } else {
+                currentTestId = testId;
+                currentQuestions = [...questionData[testId]];
+                document.getElementById('testTitleBadge').innerText = `Đề ${testId}`;
+            }
+
+            currentIndex = 0;
+            document.getElementById('totalQuestionsNum').innerText = currentQuestions.length;
+
+            document.getElementById('selectionScreen').classList.add('hidden');
+            document.getElementById('resultScreen').classList.add('hidden');
+            document.getElementById('quizScreen').classList.remove('hidden');
+
+            quizActive = true;
+            startTimer();
+            loadQuestion();
+        }
+
+        function returnToHome() {
+            playSound('click');
+            quizActive = false;
+            clearInterval(timerInterval);
+            document.getElementById('quizScreen').classList.add('hidden');
+            document.getElementById('resultScreen').classList.add('hidden');
+            document.getElementById('selectionScreen').classList.remove('hidden');
+        }
+
+        function startTimer() {
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                if (!quizActive) return;
+                secondsElapsed++;
+                const mins = Math.floor(secondsElapsed / 60).toString().padStart(2, '0');
+                const secs = (secondsElapsed % 60).toString().padStart(2, '0');
+                document.getElementById('timerDisplay').innerText = `${mins}:${secs}`;
+            }, 1000);
+        }
+
+        function loadQuestion() {
+            const q = currentQuestions[currentIndex];
+            document.getElementById('currentQuestionNum').innerText = currentIndex + 1;
+            
+            // Progress Bar
+            const progress = ((currentIndex + 1) / currentQuestions.length) * 100;
+            document.getElementById('quizProgressBar').style.width = `${progress}%`;
+
+            // Question Text & KaTeX render
+            const qTextEl = document.getElementById('questionText');
+            qTextEl.innerHTML = `Câu ${currentIndex + 1}: ${q.q}`;
+
+            // SVG Illustration
+            renderSvgIllustration(q.svgType);
+
+            // Flag Button State
+            const flagIcon = document.getElementById('flagIcon');
+            if (flaggedQuestions.has(currentIndex)) {
+                flagIcon.className = 'fa-solid fa-flag text-amber-500 text-lg';
+            } else {
+                flagIcon.className = 'fa-regular fa-flag text-lg';
+            }
+
+            // Options
+            const optContainer = document.getElementById('optionsContainer');
+            optContainer.innerHTML = '';
+            
+            q.options.forEach((opt, idx) => {
+                const isSelected = userAnswers[currentIndex] === idx;
+                const isCorrect = q.correct === idx;
+
+                let btnClass = "bg-white hover:bg-indigo-50 border-slate-200 text-slate-700";
+                let badgeClass = "bg-slate-100 text-slate-600";
+
+                if (isReviewMode) {
+                    if (isCorrect) {
+                        btnClass = "bg-emerald-50 border-emerald-500 text-emerald-900 font-semibold";
+                        badgeClass = "bg-emerald-500 text-white";
+                    } else if (isSelected && !isCorrect) {
+                        btnClass = "bg-rose-50 border-rose-500 text-rose-900";
+                        badgeClass = "bg-rose-500 text-white";
+                    }
+                } else if (isSelected) {
+                    btnClass = "bg-indigo-50 border-indigo-500 text-indigo-900 font-semibold ring-2 ring-indigo-500/20";
+                    badgeClass = "bg-indigo-600 text-white";
+                }
+
+                const btn = document.createElement('button');
+                btn.className = `p-4 rounded-2xl border text-left transition flex items-center space-x-3 shadow-sm ${btnClass}`;
+                btn.onclick = () => selectOption(idx);
+                if (isReviewMode) btn.disabled = true;
+
+                const letter = String.fromCharCode(65 + idx);
+                btn.innerHTML = `
+                    <span class="w-8 h-8 rounded-xl flex items-center justify-center font-bold text-xs shrink-0 ${badgeClass}">${letter}</span>
+                    <span class="text-sm sm:text-base flex-grow">${opt}</span>
+                `;
+                optContainer.appendChild(btn);
+            });
+
+            // Explanation box
+            const expBox = document.getElementById('explanationBox');
+            const expText = document.getElementById('explanationText');
+            if (isReviewMode) {
+                expBox.classList.remove('hidden');
+                expText.innerHTML = q.explanation;
+            } else {
+                expBox.classList.add('hidden');
+            }
+
+            // Navigation buttons
+            document.getElementById('prevBtn').disabled = currentIndex === 0;
+            const nextBtnText = document.getElementById('nextBtnText');
+            if (currentIndex === currentQuestions.length - 1) {
+                nextBtnText.innerText = isReviewMode ? "Hoàn tất xem" : "Nộp bài";
+            } else {
+                nextBtnText.innerText = "Câu tiếp";
+            }
+
+            // Render KaTeX across the document
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\(", right: "\\)", display: false},
+                    {left: "\\[", right: "\\]", display: true}
+                ],
+                throwOnError: false
+            });
+        }
+
+        function selectOption(idx) {
+            if (isReviewMode) return;
+            playSound('click');
+            userAnswers[currentIndex] = idx;
+            loadQuestion();
+        }
+
+        function toggleFlag() {
+            playSound('click');
+            if (flaggedQuestions.has(currentIndex)) {
+                flaggedQuestions.delete(currentIndex);
+            } else {
+                flaggedQuestions.add(currentIndex);
+            }
+            loadQuestion();
+        }
+
+        function nextQuestion() {
+            playSound('click');
+            if (currentIndex < currentQuestions.length - 1) {
+                currentIndex++;
+                loadQuestion();
+            } else {
+                if (isReviewMode) {
+                    returnToHome();
+                } else {
+                    confirmSubmitQuiz();
+                }
+            }
+        }
+
+        function prevQuestion() {
+            playSound('click');
+            if (currentIndex > 0) {
+                currentIndex--;
+                loadQuestion();
+            }
+        }
+
+        function confirmSubmitQuiz() {
+            const answeredCount = Object.keys(userAnswers).length;
+            const unanswered = currentQuestions.length - answeredCount;
+            let msg = `Bạn đã trả lời ${answeredCount}/${currentQuestions.length} câu.`;
+            if (unanswered > 0) {
+                msg += ` Còn ${unanswered} câu chưa trả lời.`;
+            }
+            msg += ` Bạn có chắc chắn muốn nộp bài không?`;
+
+            if (confirm(msg)) {
+                submitQuiz();
+            }
+        }
+
+        function submitQuiz() {
+            quizActive = false;
+            clearInterval(timerInterval);
+            playSound('correct');
+
+            let correctCount = 0;
+            currentQuestions.forEach((q, idx) => {
+                if (userAnswers[idx] === q.correct) {
+                    correctCount++;
+                }
+            });
+
+            const score = ((correctCount / currentQuestions.length) * 10).toFixed(1);
+            const accuracy = Math.round((correctCount / currentQuestions.length) * 100);
+
+            const mins = Math.floor(secondsElapsed / 60).toString().padStart(2, '0');
+            const secs = (secondsElapsed % 60).toString().padStart(2, '0');
+
+            document.getElementById('resCorrectCount').innerText = `${correctCount}/${currentQuestions.length}`;
+            document.getElementById('resScore').innerText = score;
+            document.getElementById('resTime').innerText = `${mins}:${secs}`;
+            document.getElementById('resAccuracy').innerText = `${accuracy}%`;
+
+            // Save high score
+            saveHighScore(currentTestId, score, accuracy);
+
+            document.getElementById('quizScreen').classList.add('hidden');
+            document.getElementById('resultScreen').classList.remove('hidden');
+
+            // Trigger confetti effect
+            triggerConfetti();
+        }
+
+        function reviewAnswers() {
+            playSound('click');
+            isReviewMode = true;
+            currentIndex = 0;
+            document.getElementById('resultScreen').classList.add('hidden');
+            document.getElementById('quizScreen').classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function retakeQuiz() {
+            startQuiz(currentTestId);
+        }
+
+        // --- NAVIGATOR MODAL ---
+        function openNavigatorModal() {
+            playSound('click');
+            const grid = document.getElementById('navigatorGrid');
+            grid.innerHTML = '';
+
+            currentQuestions.forEach((q, idx) => {
+                const btn = document.createElement('button');
+                let bgClass = "bg-slate-100 text-slate-700 border-slate-200";
+
+                if (userAnswers[idx] !== undefined) {
+                    bgClass = "bg-emerald-500 text-white border-emerald-600";
+                }
+                if (flaggedQuestions.has(idx)) {
+                    bgClass = "bg-amber-500 text-white border-amber-600";
+                }
+                if (currentIndex === idx) {
+                    bgClass += " ring-2 ring-indigo-600 ring-offset-2";
+                }
+
+                btn.className = `w-10 h-10 rounded-xl font-bold text-xs flex items-center justify-center transition border ${bgClass}`;
+                btn.innerText = idx + 1;
+                btn.onclick = () => {
+                    currentIndex = idx;
+                    closeNavigatorModal();
+                    loadQuestion();
+                };
+                grid.appendChild(btn);
+            });
+
+            document.getElementById('navigatorModal').classList.remove('hidden');
+        }
+
+        function closeNavigatorModal() {
+            playSound('click');
+            document.getElementById('navigatorModal').classList.add('hidden');
+        }
+
+        // --- HIGH SCORES & STATS ---
+        function saveHighScore(testId, score, accuracy) {
+            let stats = JSON.parse(localStorage.getItem('math9_quiz_stats') || '{}');
+            if (!stats[testId] || stats[testId].score < parseFloat(score)) {
+                stats[testId] = { score: parseFloat(score), accuracy: accuracy, date: new Date().toLocaleDateString() };
+                localStorage.setItem('math9_quiz_stats', JSON.stringify(stats));
+            }
+        }
+
+        function openStatsModal() {
+            playSound('click');
+            let stats = JSON.parse(localStorage.getItem('math9_quiz_stats') || '{}');
+            const content = document.getElementById('statsContent');
+            content.innerHTML = '';
+
+            const testNames = { 1: "Đề 1 (12 câu)", 2: "Đề 2 (12 câu)", 3: "Đề 3 (12 câu)", 4: "Đề 4 (12 câu)", 5: "Đề 5 (12 câu)", all: "Tổng hợp (60 câu)" };
+
+            for (let key in testNames) {
+                const data = stats[key];
+                const div = document.createElement('div');
+                div.className = "flex justify-between items-center p-3 bg-slate-50 border border-slate-100 rounded-2xl text-xs";
+                div.innerHTML = `
+                    <span class="font-semibold text-slate-700">${testNames[key]}</span>
+                    <span class="font-bold ${data ? 'text-indigo-600' : 'text-slate-400'}">${data ? `${data.score} điểm (${data.accuracy}%)` : 'Chưa thi'}</span>
+                `;
+                content.appendChild(div);
+            }
+
+            document.getElementById('statsModal').classList.remove('hidden');
+        }
+
+        function closeStatsModal() {
+            playSound('click');
+            document.getElementById('statsModal').classList.add('hidden');
+        }
+
+        // --- CONFETTI EFFECT ---
+        function triggerConfetti() {
+            // Simple particle burst on completion
+            const canvas = document.createElement('canvas');
+            canvas.style.position = 'fixed';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '999';
+            document.body.appendChild(canvas);
+
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            let particles = [];
+            for (let i = 0; i < 100; i++) {
+                particles.push({
+                    x: canvas.width / 2,
+                    y: canvas.height / 2,
+                    vx: (Math.random() - 0.5) * 12,
+                    vy: (Math.random() - 0.7) * 12,
+                    color: ['#4f46e5', '#ec4899', '#f59e0b', '#10b981'][Math.floor(Math.random() * 4)],
+                    size: Math.random() * 8 + 4,
+                    life: 100
+                });
+            }
+
+            function animateConfetti() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach((p, index) => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.vy += 0.3; // gravity
+                    p.life--;
+
+                    ctx.fillStyle = p.color;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    if (p.life <= 0) particles.splice(index, 1);
+                });
+
+                if (particles.length > 0) {
+                    requestAnimationFrame(animateConfetti);
+                } else {
+                    document.body.removeChild(canvas);
+                }
+            }
+            animateConfetti();
+        }
+
+        // Initial render check
+        window.onload = function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\(", right: "\\)", display: false},
+                    {left: "\\[", right: "\\]", display: true}
+                ],
+                throwOnError: false
+            });
+        };
+    </script>
+</body>
+</html>
